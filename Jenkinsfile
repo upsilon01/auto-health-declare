@@ -10,14 +10,15 @@ pipeline {
       steps {
         echo 'Installing..'
         sh 'npm i'
+        telegramSend(message: 'asdasd', chatId: 1)
       }
     }
 
     stage('run script') {
       steps {
-          withCredentials([usernamePassword(credentialsId: 'ef3ab55f-3c36-40bc-b380-0381539096c9', usernameVariable: 'USERCODE', passwordVariable: 'PASSWORD')]) {
-            sh 'echo $PASSWORD'
-            sh 'npm start'
+        withCredentials(bindings: [usernamePassword(credentialsId: 'ef3ab55f-3c36-40bc-b380-0381539096c9', usernameVariable: 'USERCODE', passwordVariable: 'PASSWORD')]) {
+          sh 'echo $PASSWORD'
+          sh 'npm start'
         }
 
       }
