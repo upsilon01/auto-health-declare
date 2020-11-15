@@ -15,8 +15,11 @@ pipeline {
 
     stage('run script') {
       steps {
-        echo 'Running..'
-        sh 'npm start'
+          withCredentials([usernamePassword(credentialsId: 'ef3ab55f-3c36-40bc-b380-0381539096c9', usernameVariable: 'USERCODE', passwordVariable: 'PASSWORD')]) {
+            sh 'echo $PASSWORD'
+            sh 'npm start'
+        }
+
       }
     }
 
