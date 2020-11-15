@@ -46,4 +46,4 @@ const fillXpath = '/html/body/app-root/main/div/components-page/div/div[2]/secti
 
     await page.screenshot({ path: 'result' });
     await browser.close();
-})();
+})().catch((x) => { process.exit(1); });
